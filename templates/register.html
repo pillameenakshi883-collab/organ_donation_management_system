@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+<style>
+body {
+    background:black;
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    padding:50px;
+}
+
+/* Main form container */
+.form-container {
+    background:#111;
+    padding:30px;
+    border-radius:10px;
+    display:inline-block;
+    width:400px;
+    box-sizing:border-box;
+}
+
+/* Section headings */
+h2, h3 {
+    margin:10px 0;
+    color:white;
+}
+
+/* Input and select boxes */
+input, select {
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #555;
+    background:black;
+    color:white;
+    box-sizing:border-box;
+}
+
+/* Dropdown options */
+option {
+    background:black;
+    color:white;
+}
+
+/* Register button */
+.btn {
+    background:red;
+    color:white;
+    padding:12px;
+    border:none;
+    width:100%;
+    border-radius:5px;
+    cursor:pointer;
+    margin-top:15px;
+    font-size:16px;
+}
+
+.btn:hover {
+    background:darkred;
+}
+
+/* Error message */
+.error {
+    color:#ff4d4d;
+    margin-bottom:10px;
+}
+
+/* Group inputs into sections */
+.section {
+    margin-bottom:20px;
+    text-align:left;
+}
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Register</h2>
+
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+    <form method="POST" action="/register">
+
+        <!-- Account Info Section -->
+        <div class="section">
+            <h3>Account Info</h3>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Create Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+
+        <!-- Personal Details Section -->
+        <div class="section">
+            <h3>Personal Details</h3>
+            <select name="role" required>
+                <option value="">Select Role</option>
+                <option value="Donor">Donor</option>
+                <option value="Recipient">Recipient</option>
+            </select>
+            <input type="number" name="age" placeholder="Age" required>
+            <select name="blood_group" required>
+                <option value="">Select Blood Group</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+            </select>
+            <input type="text" name="phone" placeholder="Phone" required>
+            <select name="organ" required>
+                <option value="">Select Organ</option>
+                <option>Kidney</option><option>Liver</option><option>Heart</option>
+                <option>Lungs</option><option>Pancreas</option><option>Intestine</option>
+                <option>Cornea (Eye)</option><option>Skin</option><option>Bone Marrow</option>
+            </select>
+        </div>
+
+        <!-- Register button -->
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+</body>
+</html>
